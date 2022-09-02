@@ -84,6 +84,7 @@ summary(multi)
     ## Residual standard error: 8.774 on 44 degrees of freedom
     ## Multiple R-squared:  0.7149, Adjusted R-squared:  0.6825 
     ## F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
+    
 ---
 
 ### Exploratory Analysis
@@ -132,6 +133,7 @@ should each be investigated individually, especially those that do seem
 to impact the correlation with the mpg. If these data are visualized,
 which is not meaningful in a multiple regression, it can be observed
 whether the data have a better correlation in a logistic regression.
+
 ---
 
 ### Removing Categorical Data in the Analysis
@@ -217,6 +219,7 @@ the true mean of the population lies between -4.50 and 13.23, which
 clearly includes 0. Therefore, in just looking at the multiple
 regression blindly, false conclusions can be made regarding AWD and gas
 mileage.
+
 --- 
 
 ## Exploratory Processing of Suspension Coil Data
@@ -270,6 +273,7 @@ there would be no issue with any of the coils, as the SD is the
 indicator of variation in the units PSI. The pressure variation in Lot 1
 is 0.99 PSI, in Lot 2 is 2.73 PSI, and in Lot 3 13.05 PSI. All three of
 the lots were well below 100 PSI.)
+
 ---
 
 ## T-Tests on Suspension Coils
@@ -383,6 +387,7 @@ was 0.04. This falls below the 0.05 cutoff, and thus the sample mean,
 mean of the population should be between 1492.3 and 1499.8, whereas we
 know that the true mean of the population is actually 1500, not in the
 range observed from this sample, Lot 3.
+
 ---
 
 ## Study Design: MechaCar vs Competition
