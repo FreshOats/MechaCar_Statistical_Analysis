@@ -1,5 +1,5 @@
 ---
-title: "Mecha Car Challenge"
+title: "MechaCar Challenge"
 author: "Justin R. Papreck"
 date: "2022-09-01"
 output:
@@ -15,13 +15,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-## Exploratory Processing of MechaCars
+#### Exploratory Processing of MechaCars
 
 ```{r explore}
 library(dplyr)
 Mecha_df <- read.csv("MechaCar_mpg.csv")
 head(Mecha_df, 5)
 ```
+
+## Linear Regression to Predict MPG
 
 The information from the tables establishes that the measurements for the cars were length, weight, spoiler angle, ground clearance, all wheel drive and miles per gallon. In order to assess the effects that each of the physical parameters of the vehicle of the car have on the miles per gallon, a multiple regression was performed.
 
@@ -33,7 +35,7 @@ multi
 summary(multi)
 ```
 
-## Exploratory Analysis
+### Exploratory Analysis
 
 The standard p-value cutoff is 0.05, so in interpreting which parameters have a very low probability of affecting the mpg, any value less than 0.05 under Pr(>|t|) are likely not contributing to the mpg. The vehicle length, at 2.6e-12, and ground clearance, at 5.21e-08, are very unlikely to provide random amounts of variance to the mpg in this linear model. 
 
@@ -48,7 +50,7 @@ The biggest issue is the AWD column. AWD is not a continuous variable - it is di
 Further considerations, if the data were all continuous, it is still unclear whether there is indeed a linear relationship. The parameters should each be investigated individually, especially those that do seem to impact the correlation with the mpg. If these data are visualized, which is not meaningful in a multiple regression, it can be observed whether the data have a better correlation in a logistic regression.
 
 
-## Removing Categorical Data in the Analysis
+### Removing Categorical Data in the Analysis
 
 ```{r awd}
 
@@ -175,11 +177,13 @@ The data types required would be as follows:
     
 Common assumptions that people make when purchasing a vehicle include how higher price is associated with safety, acceleration, and maintenance costs. Specifically that more expensive cars are 1. safer, 2. can accelerate faster and thus have a shorter quarter mile time, and 3. often have higher maintenance costs.
 
+
+#### Safety Rating ~ Lxuxry Vehicle Price
 1. The Null hypothesis in this case is that the safety rating is no different in cars at or above $55,000 (the cost of an standard-level luxury vehicle) than vehicles under that price point. The alternative hypothesis specifies that there is a difference in safety rating between cars at or above $55,000 compared to those under that price. To make this comparison, a two-sample t-test could be used to see if there is a significant difference between the two populations. 
 Alternatively, if the price points were grouped in $20,000 bins, an Chi-Squared test could be used to compare the price categories with the frequencies of ratings from the safety categories.
 
 
-
+#### Quarter mile time ~ Price
 2. To determine whether price is related to the acceleration, consider the hypotheses: 
 There is no correlation between the price of vehicles and the quarter mile time of vehicles. The alternative hypothesis is that there is a correlation between the price of vehicles and their quarter mile times. 
 To determine this, a linear regression can be used since both variables are continuous. 
@@ -187,12 +191,12 @@ Furthermore, a multiple regression analysis could be used to determine what othe
   
   
   
-  
+#### Maintenance Cost ~ Price
  3. Expensive cars are typically associated with higher maintenance costs. The null hypothesis in this scenario states that there as vehicle price increases, there is no correlation with the maintenance cost of those vehicles. Alternatively, as the price of a vehicle increases, there is a significant change in the cost of maintenance. It is important to not specify an increase or decrease, as the prior information is simply hearsay and should have no bearing on the data. If there is a correlation, it is more important to note that either yes, or no, there is a difference, and only then specify that it increased or decreased. Otherwise, if the alternative states that it explicitly an increase, it is possible that we would have to reject both hypotheses if a decrease in costs was observed. This also avoids having to do two tests, one to state that there is no increase in maintenance cost with price, followed by another post hoc analysis stating that there is no decrease. 
 To test this, since the maintenance costs are categorical but the price is continuous, an ANOVA test would provide the distribution means. This remains true even if we were to increase the categories from 3 to 5 in the maintenance cost measurements. 
   
   
   
- 
+#### Maintance Costs, Safety Ratings, AWD, and Moon Roofs 
 4. One final set of tests could be whether there is a correlation between vehicles with or without AWD and/or a moon roof and maintenance costs or safety ratings. Because all of these parameters can be considered categorical, the AWD and moon roof are dichotomous while the maintenance costs and safety ratings are scaled interval data but can also be considered ordinal, the only test equipped to compare sets of categorical data is the Chi-squared test. 
  

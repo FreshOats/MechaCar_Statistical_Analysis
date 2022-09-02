@@ -1,9 +1,9 @@
-Mecha Car Challenge
+MechaCar Challenge
 ================
 Justin R. Papreck
 2022-09-01
 
-## Exploratory Processing of MechaCars
+#### Exploratory Processing of MechaCars
 
 ``` r
 library(dplyr)
@@ -31,6 +31,8 @@ head(Mecha_df, 5)
     ## 3       20.00000       8337.981      78.63232         12.25371   0 80.00000
     ## 4       13.42849       9419.671      55.93903         12.98936   1 18.94149
     ## 5       15.44998       3772.667      26.12816         15.10396   1 63.82457
+
+## Linear Regression to Predict MPG
 
 The information from the tables establishes that the measurements for
 the cars were length, weight, spoiler angle, ground clearance, all wheel
@@ -83,7 +85,7 @@ summary(multi)
     ## Multiple R-squared:  0.7149, Adjusted R-squared:  0.6825 
     ## F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
 
-## Exploratory Analysis
+### Exploratory Analysis
 
 The standard p-value cutoff is 0.05, so in interpreting which parameters
 have a very low probability of affecting the mpg, any value less than
@@ -130,7 +132,7 @@ to impact the correlation with the mpg. If these data are visualized,
 which is not meaningful in a multiple regression, it can be observed
 whether the data have a better correlation in a logistic regression.
 
-## Removing Categorical Data in the Analysis
+### Removing Categorical Data in the Analysis
 
 ``` r
 multi_no_awd <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance, Mecha_df)
@@ -426,6 +428,8 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
 2. can accelerate faster and thus have a shorter quarter mile time, and
 3. often have higher maintenance costs.
 
+#### Safety Rating \~ Lxuxry Vehicle Price
+
 1.  The Null hypothesis in this case is that the safety rating is no
     different in cars at or above \$55,000 (the cost of an
     standard-level luxury vehicle) than vehicles under that price point.
@@ -437,6 +441,8 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
     \$20,000 bins, an Chi-Squared test could be used to compare the
     price categories with the frequencies of ratings from the safety
     categories.
+
+#### Quarter mile time \~ Price
 
 2.  To determine whether price is related to the acceleration, consider
     the hypotheses: There is no correlation between the price of
@@ -453,6 +459,8 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
     qsec, is typically the dependent variable as a result of the other
     factors, a correlation could give insight to further relationships
     as to how the two could be linked.
+
+#### Maintenance Cost \~ Price
 
 3.  Expensive cars are typically associated with higher maintenance
     costs. The null hypothesis in this scenario states that there as
@@ -473,6 +481,8 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
     is continuous, an ANOVA test would provide the distribution means.
     This remains true even if we were to increase the categories from 3
     to 5 in the maintenance cost measurements.
+
+#### Maintance Costs, Safety Ratings, AWD, and Moon Roofs 
 
 4.  One final set of tests could be whether there is a correlation
     between vehicles with or without AWD and/or a moon roof and
