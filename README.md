@@ -1,9 +1,8 @@
-MechaCar Challenge
+# MechaCar Challenge
 ================
-Justin R. Papreck
-2022-09-01
+#### by Justin R. Papreck
 
-#### Exploratory Processing of MechaCars
+## Exploratory Processing of MechaCars
 
 ``` r
 library(dplyr)
