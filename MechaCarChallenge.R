@@ -1,3 +1,8 @@
+# Please note, I completed the code in this challenge using the MechaCarChallenge.Rmd file, and these are just the functions cut and pasted from the Rmd. 
+
+
+
+
 # Libraries
 library(dplyr)
 
