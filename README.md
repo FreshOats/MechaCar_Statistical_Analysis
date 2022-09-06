@@ -221,7 +221,16 @@ regression blindly, false conclusions can be made regarding AWD and gas
 mileage.
 
 --- 
+## Deliverable 1 Summary 
 
+1) In the initial linear regression, the vehicle weight (p=0.08), spoiler angle (p=0.31), and presence of AWD (p=0.19) provided a non-random amount of variance to the mpg values in the dataset.
+2) The slope of the linear model is not considered to be zero.  The p-value of the multiple linear regression was 5.35e-11, falling far below the acceptance value of p=0.05, indicating that there is a non-zero correlation between the parameters in the model and the mpg.
+3) The linear model is a somewhat effective predictor of MechaCar mpg in the prototypes. While there is a correlation between the parameters of weight, spoiler angle, and potential impact from the presence of AWD, the goodness of fit falls right on the border of a strong correlation, with the R-squared coefficient of 0.7. 
+
+
+
+
+---
 ## Exploratory Processing of Suspension Coil Data
 
 ``` r
@@ -438,19 +447,10 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
 2. can accelerate faster and thus have a shorter quarter mile time, and
 3. often have higher maintenance costs.
 
-#### Safety Rating \~ Lxuxry Vehicle Price
+#### Safety Rating \~ Vehicle Price
 
-1.  The Null hypothesis in this case is that the safety rating is no
-    different in cars at or above \$55,000 (the cost of an
-    standard-level luxury vehicle) than vehicles under that price point.
-    The alternative hypothesis specifies that there is a difference in
-    safety rating between cars at or above \$55,000 compared to those
-    under that price. To make this comparison, a two-sample t-test could
-    be used to see if there is a significant difference between the two
-    populations. Alternatively, if the price points were grouped in
-    \$20,000 bins, an Chi-Squared test could be used to compare the
-    price categories with the frequencies of ratings from the safety
-    categories.
+1.  The Null hypothesis in this case is that there is no correlation between the safety rating of the vehicle and the vehicle's price.
+    The alternative hypothesis specifies that there is a correlation with the safety rating to the vehicle's price. To make this comparison, an ANOVA analysis can be used. Since the safety rating is scaled data, it would be considered either interval or ordinal, but not continuous. In this test, the price would be considered the dependent variable, and the safety rating would be considered independent. Therefore, this analysis is looking at whether the additional safety features that provided the safety score have potentially impacted the price of the vehicle.
 
 #### Quarter mile time \~ Price
 
@@ -474,25 +474,14 @@ maintenance costs. Specifically that more expensive cars are 1. safer,
 
 3.  Expensive cars are typically associated with higher maintenance
     costs. The null hypothesis in this scenario states that there as
-    vehicle price increases, there is no correlation with the
-    maintenance cost of those vehicles. Alternatively, as the price of a
-    vehicle increases, there is a significant change in the cost of
-    maintenance. It is important to not specify an increase or decrease,
-    as the prior information is simply hearsay and should have no
-    bearing on the data. If there is a correlation, it is more important
-    to note that either yes, or no, there is a difference, and only then
-    specify that it increased or decreased. Otherwise, if the
-    alternative states that it explicitly an increase, it is possible
-    that we would have to reject both hypotheses if a decrease in costs
-    was observed. This also avoids having to do two tests, one to state
-    that there is no increase in maintenance cost with price, followed
-    by another post hoc analysis stating that there is no decrease. To
-    test this, since the maintenance costs are categorical but the price
+    there is no correlation with the price of a vehicle and its 
+    maintenance cost. Alternatively, there is a correlation with the cost of a vehicle and its
+    maintenance cost. To test this, since the maintenance costs are categorical but the price
     is continuous, an ANOVA test would provide the distribution means.
     This remains true even if we were to increase the categories from 3
     to 5 in the maintenance cost measurements.
 
-#### Maintance Costs, Safety Ratings, AWD, and Moon Roofs 
+#### Maintenance Costs, Safety Ratings, AWD, and Moon Roofs 
 
 4.  One final set of tests could be whether there is a correlation
     between vehicles with or without AWD and/or a moon roof and
